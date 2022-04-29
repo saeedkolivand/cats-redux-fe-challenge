@@ -1,7 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
+import ImageCategoriesSlice from "../components/imageCategories/imageCategories.slice";
 
 const store = configureStore({
-  reducer: {},
+  reducer: {
+    imageCategories: ImageCategoriesSlice.reducer,
+  },
   devTools: process.env.NODE_ENV !== "production",
 });
 
