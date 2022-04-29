@@ -5,8 +5,9 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import * as serviceWorkerRegistration from "./app/serviceWorkerRegistration";
 import reportWebVitals from "./app/reportWebVitals";
 import store from "./app/store";
-import GlobalStyle from "./assets/styles/GlobalStyle.style";
 import AppRouter from "./routes/AppRouter";
+import "./assets/styles/globalStyle.style.css";
+import GlobalStyles from "./assets/styles/globalStyles.style";
 
 const queryClient = new QueryClient();
 
@@ -19,7 +20,7 @@ root.render(
       <QueryClientProvider client={queryClient}>
         <AppRouter />
       </QueryClientProvider>
-      <GlobalStyle />
+      <GlobalStyles />
     </Provider>
   </React.StrictMode>
 );
