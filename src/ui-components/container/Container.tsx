@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import ImageCategoriesSidebar from "components/imageCategories/ImageCategories";
+import CloseSidebarButton from "assets/images/cross-black.svg";
+import OpenSidebarButton from "assets/images/menu-icon.svg";
 import { ContainerPropsTypes } from "./container.types";
 import Loading from "../loading/Loading";
 import {
+  CloseSidebarButtonStyle,
   ContainerMainContentStyle,
+  ContainerSidebarBackgroundStyle,
   ContainerSidebarStyle,
   ContainerStyle,
+  OpenSidebarButtonStyle,
 } from "./container.style";
 import Error from "../error/Error";
 
@@ -21,7 +26,16 @@ const Container: React.FC<ContainerPropsTypes> = (props) => {
     onClick,
   } = props;
 
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
+
   const isMobile = window.outerWidth <= 480;
+
+  const mobileSidebarStatus = isMobileSidebarOpen
+    ? "mobile-sidebar-open"
+    : "mobile-sidebar-close";
+
+  const handleOpenSidebar = () => setIsMobileSidebarOpen(true);
+  const handleCloseSidebar = () => setIsMobileSidebarOpen(false);
 
   return (
     <ContainerStyle
@@ -37,8 +51,21 @@ const Container: React.FC<ContainerPropsTypes> = (props) => {
         errorMessage={errorMessage}
       />
 
-      <ContainerSidebarStyle>
+      <OpenSidebarButtonStyle onClick={handleOpenSidebar}>
+        <img src={OpenSidebarButton} alt="open" />
+      </OpenSidebarButtonStyle>
+
+      <ContainerSidebarBackgroundStyle
+        className={mobileSidebarStatus}
+        onClick={handleCloseSidebar}
+      />
+
+      <ContainerSidebarStyle className={mobileSidebarStatus}>
         <ImageCategoriesSidebar />
+
+        <CloseSidebarButtonStyle onClick={handleCloseSidebar}>
+          <img src={CloseSidebarButton} alt="close" />
+        </CloseSidebarButtonStyle>
       </ContainerSidebarStyle>
 
       <ContainerMainContentStyle>{children}</ContainerMainContentStyle>
