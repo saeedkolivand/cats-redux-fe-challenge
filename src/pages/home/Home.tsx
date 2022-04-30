@@ -7,21 +7,25 @@ import { addCatImagesAction } from "components/catImagesList/catImagesList.slice
 import { getCatImagesService } from "./home.api";
 
 const Home = () => {
-  const { imageCategoriesLoading } = useSelector(
+  const { imageCategoriesLoading, selectedImageCategoryId } = useSelector(
     (state) => state.imageCategories
   );
   const dispatch = useDispatch();
 
-  const { data, refetch, isLoading, isRefetching } = useQuery(
-    "getCatImages",
-    () => getCatImagesService({ limit: 10 })
-  );
+  const { data, refetch, isLoading, isRefetching, isPreviousData, isFetched } =
+    useQuery("getCatImages", () =>
+      getCatImagesService({ limit: 10, category_ids: selectedImageCategoryId })
+    );
 
   useEffect(() => {
     if (data?.data) {
       dispatch(addCatImagesAction(data.data));
     }
   }, [data]);
+
+  useEffect(() => {
+    if (selectedImageCategoryId && !isPreviousData) refetch();
+  }, [selectedImageCategoryId]);
 
   useEffect(() => {
     refetch();

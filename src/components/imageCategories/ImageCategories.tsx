@@ -3,7 +3,11 @@ import { useQuery } from "react-query";
 import { ImageCategoriesPropsTypes } from "./imageCategories.types";
 import { useDispatch, useSelector } from "../../app/hooks";
 import { getImageCategoriesService } from "./imageCategories.api";
-import { addImageCategoriesAction } from "./imageCategories.slice";
+import {
+  addImageCategoriesAction,
+  addSelectedImageCategoryAction,
+} from "./imageCategories.slice";
+import { ImageCategoriesWrapperStyle } from "./imageCategories.style";
 
 const ImageCategoriesSidebar: React.FC<ImageCategoriesPropsTypes> = (props) => {
   const { imageCategories } = useSelector((state) => state.imageCategories);
@@ -24,14 +28,21 @@ const ImageCategoriesSidebar: React.FC<ImageCategoriesPropsTypes> = (props) => {
     }
   }, [data]);
 
+  const handleSelectedCategory = (id: string | number) =>
+    dispatch(addSelectedImageCategoryAction(id));
+
   return (
-    <nav>
+    <ImageCategoriesWrapperStyle>
       <ul>
         {imageCategories?.map((item) => (
-          <li key={`category-${item.id}`}>{item.name}</li>
+          <li key={`category-${item.id}`}>
+            <span onClick={() => handleSelectedCategory(item.id)}>
+              {item.name}
+            </span>
+          </li>
         ))}
       </ul>
-    </nav>
+    </ImageCategoriesWrapperStyle>
   );
 };
 

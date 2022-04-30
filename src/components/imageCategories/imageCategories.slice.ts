@@ -3,6 +3,7 @@ import { ImageCategoriesReduxTypes } from "./imageCategories.types";
 
 const initialState: ImageCategoriesReduxTypes = {
   imageCategories: [],
+  selectedImageCategoryId: "",
   imageCategoriesLoading: true,
 };
 
@@ -16,9 +17,16 @@ const ImageCategoriesSlice = createSlice({
         imageCategoriesLoading: false,
       };
     },
+    addSelectedImageCategoryAction: (state, action) => {
+      return {
+        ...state,
+        selectedImageCategoryId: action.payload,
+      };
+    },
   },
 });
 
-export const { addImageCategoriesAction } = ImageCategoriesSlice.actions;
+export const { addImageCategoriesAction, addSelectedImageCategoryAction } =
+  ImageCategoriesSlice.actions;
 
 export default ImageCategoriesSlice;
