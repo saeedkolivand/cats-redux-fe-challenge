@@ -9,13 +9,9 @@ export const ImageCategoriesWrapperStyle = styled.nav`
     list-style-type: none;
     padding: 0;
     margin: 0;
-
     li {
       padding-top: ${spacingSize.small}px;
       cursor: pointer;
-
-      &:hover {
-      }
     }
   }
 `;
