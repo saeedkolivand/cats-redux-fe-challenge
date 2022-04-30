@@ -8,19 +8,18 @@ export const CatImagesListBoxStyle = styled.div`
 export const CatImagesListWrapperStyle = styled.div`
   display: flex;
   flex-wrap: wrap;
-
-  @media (max-width: 576px) {
-    justify-content: center;
-  }
+  justify-content: center;
 `;
 
 export const CatImagesListLoadMoreStyle = styled.button`
   height: ${spacingSize.large}px;
   border: none;
   margin-top: ${spacingSize.medium}px;
+  margin-bottom: ${spacingSize.medium}px;
   box-shadow: 0 0 10px 0 #0000001a;
   background-color: transparent;
   border-radius: ${spacingSize.small}px;
+  cursor: pointer;
 
   @media (max-width: 576px) {
     width: 40%;

@@ -12,13 +12,20 @@ const CatImagesListSlice = createSlice({
   reducers: {
     addCatImagesAction: (state, action) => {
       return {
-        catImagesList: [...state.catImagesList, ...action.payload],
+        catImagesList: action.payload,
+        catImagesListLoading: false,
+      };
+    },
+    addCatImagesCategoryAction: (state, action) => {
+      return {
+        catImagesList: action.payload,
         catImagesListLoading: false,
       };
     },
   },
 });
 
-export const { addCatImagesAction } = CatImagesListSlice.actions;
+export const { addCatImagesAction, addCatImagesCategoryAction } =
+  CatImagesListSlice.actions;
 
 export default CatImagesListSlice;

@@ -53,7 +53,7 @@ export const ContainerSidebarBackgroundStyle = styled.div`
   z-index: 997;
   background-color: #000;
   top: 0;
-  left: -100%;
+  left: -100vw;
 
   &.mobile-sidebar-open {
     visibility: visible;
@@ -70,8 +70,6 @@ export const ContainerSidebarBackgroundStyle = styled.div`
 
 export const ContainerSidebarStyle = styled.div`
   flex: 1;
-  box-shadow: 0 0 10px 0 #0000001a;
-  border-radius: ${spacingSize.small}px;
   
     @media (max-width: 576px) {
       position: absolute;
