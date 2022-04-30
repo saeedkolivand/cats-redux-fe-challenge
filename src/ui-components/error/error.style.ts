@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { spacingSize } from "../../assets/styles/globalStyles.style";
 
 export const ErrorBackgroundStyle = styled.div`
   width: 100vw;
@@ -31,7 +32,7 @@ export const ErrorWrapperStyle = styled.div`
   z-index: 2;
   padding: 20px;
   overflow: hidden;
-  border-radius: 4px;
+  border-radius: ${spacingSize.small}px;
   background-color: #fff;
   justify-items: center;
   right: -100%;
@@ -57,6 +58,6 @@ export const ErrorRetryButton = styled.button`
   padding: 0.5ch 2ch;
   background-color: #fff;
   border: 1px solid #a6acbe;
-  border-radius: 10px;
+  border-radius: ${spacingSize.small}px;
   cursor: pointer;
 `;

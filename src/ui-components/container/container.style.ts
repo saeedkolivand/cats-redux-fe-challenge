@@ -23,10 +23,11 @@ export const ContainerStyle = styled.div`
 
 export const ContainerMainContentStyle = styled.div`
   flex: 6;
+  margin-left: ${spacingSize.medium}px;
 `;
 
 export const ContainerSidebarStyle = styled.div`
   flex: 1;
   box-shadow: 0 0 10px 0 #0000001a;
-  border-radius: 5px;
+  border-radius: ${spacingSize.small}px;
 `;

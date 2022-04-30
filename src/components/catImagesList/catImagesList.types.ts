@@ -4,3 +4,7 @@ export interface CatImagesListReduxTypes {
   catImagesList: ImageCardPropsTypes[];
   catImagesListLoading: boolean;
 }
+
+export interface CatImagesListProps {
+  refetch: () => void;
+}

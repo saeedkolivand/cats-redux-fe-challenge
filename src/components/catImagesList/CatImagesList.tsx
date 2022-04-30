@@ -1,43 +1,31 @@
-import React, { useEffect } from "react";
-import { useQuery } from "react-query";
-import { useDispatch, useSelector } from "app/hooks";
-import { getCatImagesService } from "pages/home/home.api";
+import React from "react";
+import { useSelector } from "app/hooks";
 import ImageCard from "./components/imageCard/ImageCard";
-import { addCatImagesAction } from "./catImagesList.slice";
-import { CatImagesListWrapperStyle } from "./catImagesList.style";
+import {
+  CatImagesListLoadMoreStyle,
+  CatImagesListWrapperStyle,
+} from "./catImagesList.style";
+import { CatImagesListProps } from "./catImagesList.types";
 
-const CatImagesList = () => {
-  const { imageCategories } = useSelector((state) => state.imageCategories);
+const CatImagesList: React.FC<CatImagesListProps> = (props) => {
+  const { refetch } = props;
+
   const { catImagesList } = useSelector((state) => state.imagesList);
-
-  const dispatch = useDispatch();
-
-  const { data, refetch } = useQuery("getCatImages", () =>
-    getCatImagesService({ limit: 10 })
-  );
-
-  useEffect(() => {
-    if (data?.data) {
-      dispatch(addCatImagesAction(data.data));
-    }
-  }, [data]);
-
-  useEffect(() => {
-    refetch();
-  }, []);
 
   const onClick = () => refetch();
 
   return (
-    <CatImagesListWrapperStyle>
-      {catImagesList?.map((item) => (
-        <ImageCard {...item} key={item.id} />
-      ))}
+    <div style={{ display: "grid" }}>
+      <CatImagesListWrapperStyle>
+        {catImagesList?.map((item) => (
+          <ImageCard {...item} key={item.id} />
+        ))}
+      </CatImagesListWrapperStyle>
 
-      <button type="button" onClick={onClick}>
-        load more
-      </button>
-    </CatImagesListWrapperStyle>
+      <CatImagesListLoadMoreStyle type="button" onClick={onClick}>
+        Load More
+      </CatImagesListLoadMoreStyle>
+    </div>
   );
 };
 

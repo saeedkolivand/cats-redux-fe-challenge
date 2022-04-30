@@ -26,13 +26,11 @@ const ImageCategoriesSidebar: React.FC<ImageCategoriesPropsTypes> = (props) => {
 
   return (
     <nav>
-      <div className="menu">
-        <ul>
-          {imageCategories?.map((item) => (
-            <li key={`category-${item.id}`}>{item.name}</li>
-          ))}
-        </ul>
-      </div>
+      <ul>
+        {imageCategories?.map((item) => (
+          <li key={`category-${item.id}`}>{item.name}</li>
+        ))}
+      </ul>
     </nav>
   );
 };

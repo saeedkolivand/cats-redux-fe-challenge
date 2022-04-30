@@ -30,17 +30,18 @@ const Container: React.FC<ContainerPropsTypes> = (props) => {
       style={style}
     >
       <Loading loading={loading} />
+
       <Error
         fetchDataFunction={errorRetryFunction}
         hasError={hasError}
         errorMessage={errorMessage}
       />
 
-      <ContainerMainContentStyle>{children}</ContainerMainContentStyle>
-
       <ContainerSidebarStyle>
         <ImageCategoriesSidebar />
       </ContainerSidebarStyle>
+
+      <ContainerMainContentStyle>{children}</ContainerMainContentStyle>
     </ContainerStyle>
   );
 };

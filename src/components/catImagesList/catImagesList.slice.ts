@@ -7,7 +7,7 @@ const initialState: CatImagesListReduxTypes = {
 };
 
 const CatImagesListSlice = createSlice({
-  name: "CatImagesListSlice",
+  name: "catImagesListSlice",
   initialState,
   reducers: {
     addCatImagesAction: (state, action) => {
