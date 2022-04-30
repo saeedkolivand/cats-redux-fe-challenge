@@ -7,4 +7,5 @@ type imageCategoriesResponseTypes = {
 
 export interface ImageCategoriesReduxTypes {
   imageCategories?: imageCategoriesResponseTypes[];
+  imageCategoriesLoading?: boolean;
 }

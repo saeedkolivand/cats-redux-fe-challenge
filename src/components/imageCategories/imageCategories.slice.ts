@@ -3,6 +3,7 @@ import { ImageCategoriesReduxTypes } from "./imageCategories.types";
 
 const initialState: ImageCategoriesReduxTypes = {
   imageCategories: [],
+  imageCategoriesLoading: true,
 };
 
 const ImageCategoriesSlice = createSlice({
@@ -11,10 +12,13 @@ const ImageCategoriesSlice = createSlice({
   reducers: {
     addImageCategoriesAction: (state, action) => {
       return {
-        ...action.payload,
+        imageCategories: action.payload,
+        imageCategoriesLoading: false,
       };
     },
   },
 });
+
+export const { addImageCategoriesAction } = ImageCategoriesSlice.actions;
 
 export default ImageCategoriesSlice;

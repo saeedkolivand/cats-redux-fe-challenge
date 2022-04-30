@@ -1,7 +1,12 @@
 import React from "react";
+import ImageCategoriesSidebar from "components/imageCategories/ImageCategories";
 import { ContainerPropsTypes } from "./container.types";
 import Loading from "../loading/Loading";
-import { ContainerStyle } from "./container.style";
+import {
+  ContainerMainContentStyle,
+  ContainerSidebarStyle,
+  ContainerStyle,
+} from "./container.style";
 import Error from "../error/Error";
 
 const Container: React.FC<ContainerPropsTypes> = (props) => {
@@ -11,13 +16,19 @@ const Container: React.FC<ContainerPropsTypes> = (props) => {
     hasError = false,
     errorMessage,
     errorRetryFunction,
-    className,
+    className = "",
     style,
     onClick,
   } = props;
 
+  const isMobile = window.outerWidth <= 480;
+
   return (
-    <ContainerStyle className={className} onClick={onClick} style={style}>
+    <ContainerStyle
+      className={`${className} ${!isMobile ? "with-sidebar" : "not-sidebar"}`}
+      onClick={onClick}
+      style={style}
+    >
       <Loading loading={loading} />
       <Error
         fetchDataFunction={errorRetryFunction}
@@ -25,7 +36,11 @@ const Container: React.FC<ContainerPropsTypes> = (props) => {
         errorMessage={errorMessage}
       />
 
-      {children && children}
+      <ContainerMainContentStyle>{children}</ContainerMainContentStyle>
+
+      <ContainerSidebarStyle>
+        <ImageCategoriesSidebar />
+      </ContainerSidebarStyle>
     </ContainerStyle>
   );
 };

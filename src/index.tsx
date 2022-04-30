@@ -9,7 +9,14 @@ import AppRouter from "./routes/AppRouter";
 import "./assets/styles/globalStyle.style.css";
 import GlobalStyles from "./assets/styles/globalStyles.style";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      enabled: false,
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 const container = document.getElementById("root")!;
 const root = createRoot(container);
