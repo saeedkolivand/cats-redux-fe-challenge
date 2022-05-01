@@ -18,7 +18,7 @@ yarn start | npm start
 ## Run tests
 
 ```sh
-yarn test | npm run test
+yarn test | npm test
 ```
 
 ## Author
