@@ -1,4 +1,4 @@
-import HttpService from "../../app/apiService";
+import HttpService from "app/apiService";
 import { CatImagesParamsTypes } from "./home.types";
 
 const API = "/v1/images/search";

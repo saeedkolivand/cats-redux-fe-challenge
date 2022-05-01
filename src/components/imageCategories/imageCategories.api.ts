@@ -1,4 +1,4 @@
-import HttpService from "../../app/apiService";
+import HttpService from "app/apiService";
 
 const API = "/v1/categories";
 
