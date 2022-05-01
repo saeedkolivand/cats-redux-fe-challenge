@@ -17,7 +17,8 @@ export const CatImagesListLoadMoreStyle = styled.button`
   margin-top: ${spacingSize.medium}px;
   margin-bottom: ${spacingSize.medium}px;
   box-shadow: 0 0 10px 0 #0000001a;
-  background-color: transparent;
+  background-color: #2593fc;
+  color: #fff;
   border-radius: ${spacingSize.small}px;
   cursor: pointer;
 
@@ -26,6 +27,7 @@ export const CatImagesListLoadMoreStyle = styled.button`
     position: fixed;
     bottom: ${spacingSize.normal}px;
     left: 50%;
+    z-index: 22;
     transform: translateX(-50%);
   }
 `;

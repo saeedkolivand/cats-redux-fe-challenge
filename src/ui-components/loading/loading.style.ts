@@ -48,7 +48,7 @@ export const LoadingWrapperStyle = styled.div`
 export const LoadingBodyStyle = styled.div`
   width: 100px;
   height: 70px;
-  top: 45%;
+  top: 35%;
   color: #000;
   border-radius: ${spacingSize.small}px;
   background-color: #fff;
