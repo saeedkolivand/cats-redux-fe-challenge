@@ -10,14 +10,22 @@ export const initLoadingPortal = () => {
 };
 
 describe("Loading test cases", () => {
+  beforeEach(initLoadingPortal);
   afterAll(cleanup);
 
-  it("should render loading portal", () => {
+  it("should show loading", () => {
     initLoadingPortal();
-
-    render(<Loading />);
+    render(<Loading loading />);
 
     const loadingElement = screen.getByLabelText("loading-wrapper");
-    expect(loadingElement).toBeTruthy();
+    expect(loadingElement.classList.contains("show-loading")).toBeTruthy();
+  });
+
+  it("should NOT show loading portal", () => {
+    initLoadingPortal();
+    render(<Loading loading={false} />);
+
+    const loadingElement = screen.getByLabelText("loading-wrapper");
+    expect(loadingElement.classList.contains("hide-loading")).toBeTruthy();
   });
 });

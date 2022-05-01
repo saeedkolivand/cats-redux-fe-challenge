@@ -7,10 +7,10 @@ const NotFound: React.FC<NotFoundPropsTypes> = (props) => {
 
   return (
     <NotFoundStyle
-      className={`not-found ${className}`}
+      className={`absolute-center ${className}`}
       aria-label="not-found-wrapper"
     >
-      No Data :(
+      Page Not Found :(
     </NotFoundStyle>
   );
 };

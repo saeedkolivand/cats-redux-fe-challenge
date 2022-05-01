@@ -44,9 +44,12 @@ const Image: React.FC<ImagePropsTypes> = (props) => {
         src={ClosePreviewButton}
         alt="close"
         onClick={hidePreview}
+        aria-label="close-image-preview"
       />
+
       <ImagePreviewBodyStyle
         className={`absolute-center flex-center ${previewStatus}`}
+        aria-label="image-preview-wrapper"
       >
         <ImagePreviewStyle src={url} alt="preview" />
       </ImagePreviewBodyStyle>
