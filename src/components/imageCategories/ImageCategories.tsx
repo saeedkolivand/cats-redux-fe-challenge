@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { useQuery } from "react-query";
+import { useDispatch, useSelector } from "app/hooks";
 import {
   ImageCategoriesPropsTypes,
   imageCategoriesResponseTypes,
 } from "./imageCategories.types";
-import { useDispatch, useSelector } from "../../app/hooks";
 import { getImageCategoriesService } from "./imageCategories.api";
 import {
   addImageCategoriesAction,

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { spacingSize } from "../../assets/styles/globalStyles.style";
+import { spacingSize } from "assets/styles/globalStyles.style";
 
 export const ImageBackgroundStyle = styled.div`
   width: 100vw;

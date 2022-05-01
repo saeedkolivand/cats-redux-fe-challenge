@@ -1,5 +1,7 @@
-import Home from "./Home";
-import { AppRouterTypes } from "../../routes/appRouter.types";
+import { AppRouterTypes } from "routes/appRouter.types";
+import { lazy } from "react";
+
+const Home = lazy(() => import("./Home"));
 
 export const HomePathNames = {
   root: "/",
