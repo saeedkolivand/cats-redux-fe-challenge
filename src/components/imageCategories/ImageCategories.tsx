@@ -1,12 +1,21 @@
 import React, { useEffect } from "react";
 import { useQuery } from "react-query";
-import { ImageCategoriesPropsTypes } from "./imageCategories.types";
+import {
+  ImageCategoriesPropsTypes,
+  imageCategoriesResponseTypes,
+} from "./imageCategories.types";
 import { useDispatch, useSelector } from "../../app/hooks";
 import { getImageCategoriesService } from "./imageCategories.api";
-import { addImageCategoriesAction } from "./imageCategories.slice";
+import {
+  addImageCategoriesAction,
+  addSelectedImageCategoryAction,
+} from "./imageCategories.slice";
+import { ImageCategoriesWrapperStyle } from "./imageCategories.style";
 
 const ImageCategoriesSidebar: React.FC<ImageCategoriesPropsTypes> = (props) => {
-  const { imageCategories } = useSelector((state) => state.imageCategories);
+  const { imageCategories, selectedImageCategory } = useSelector(
+    (state) => state.imageCategories
+  );
   const dispatch = useDispatch();
 
   const { data, isLoading, isError, refetch, isSuccess } = useQuery(
@@ -24,16 +33,26 @@ const ImageCategoriesSidebar: React.FC<ImageCategoriesPropsTypes> = (props) => {
     }
   }, [data]);
 
+  const handleSelectedCategory = (item: imageCategoriesResponseTypes) =>
+    dispatch(addSelectedImageCategoryAction(item));
+
   return (
-    <nav>
-      <div className="menu">
-        <ul>
-          {imageCategories?.map((item) => (
-            <li key={`category-${item.id}`}>{item.name}</li>
-          ))}
-        </ul>
-      </div>
-    </nav>
+    <ImageCategoriesWrapperStyle>
+      <ul>
+        {imageCategories?.map((item) => (
+          <li
+            key={`category-${item.id}`}
+            className={`${
+              item.name === selectedImageCategory.name ? "active-category" : ""
+            }`}
+          >
+            <span onClick={() => handleSelectedCategory(item)}>
+              {item.name}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </ImageCategoriesWrapperStyle>
   );
 };
 

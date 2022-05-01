@@ -20,5 +20,5 @@ export const ImageCardStyle = styled.img`
   width: auto;
   height: auto;
   box-shadow: 0 0 10px 0 #0000001a;
-  border-radius: 10px;
+  border-radius: ${spacingSize.small}px;
 `;

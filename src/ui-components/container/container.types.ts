@@ -10,3 +10,7 @@ export interface ContainerPropsTypes {
   style?: React.CSSProperties;
   onClick?: () => void;
 }
+
+export interface SidebarPropsTypes extends React.HTMLProps<HTMLDivElement> {
+  isMobile: boolean;
+}

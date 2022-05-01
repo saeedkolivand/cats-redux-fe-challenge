@@ -1,6 +1,8 @@
 import styled from "styled-components";
+import { spacingSize } from "assets/styles/globalStyles.style";
 
 export const LoadingBackgroundStyle = styled.div`
+  position: fixed;
   width: 100vw;
   height: 100vh;
   z-index: 998;
@@ -22,6 +24,7 @@ export const LoadingBackgroundStyle = styled.div`
 `;
 
 export const LoadingWrapperStyle = styled.div`
+  position: fixed;
   width: 250px;
   height: 100vh;
   z-index: 999;
@@ -47,7 +50,7 @@ export const LoadingBodyStyle = styled.div`
   height: 70px;
   top: 45%;
   color: #000;
-  border-radius: 10px;
+  border-radius: ${spacingSize.small}px;
   background-color: #fff;
 `;
 
