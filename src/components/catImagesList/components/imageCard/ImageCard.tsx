@@ -15,13 +15,11 @@ const ImageCard: React.FC<ImageCardPropsTypes> = (props) => {
       <ImageCardWrapperStyle onClick={handleOpenPreview}>
         <ImageCardStyle src={url} alt={`cat-${id}`} />
       </ImageCardWrapperStyle>
-      {showFullScreen && (
-        <Image
-          showPreview={showFullScreen}
-          url={url}
-          hidePreview={handleClosePreview}
-        />
-      )}
+      <Image
+        showPreview={showFullScreen}
+        url={url}
+        hidePreview={handleClosePreview}
+      />
     </>
   );
 };

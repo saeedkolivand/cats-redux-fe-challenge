@@ -9,16 +9,16 @@ export const initErrorModalPortal = () => {
   body.appendChild(div);
 };
 
-describe("Loading test cases", () => {
+describe("Error test cases", () => {
+  beforeAll(initErrorModalPortal);
   afterAll(cleanup);
 
-  it("should render loading portal", () => {
-    initErrorModalPortal();
-
+  it("should render Error portal", () => {
     const fetchDataFunction = jest.fn();
 
     render(
       <Error
+        hasError
         errorMessage="errorMessage"
         fetchDataFunction={fetchDataFunction}
       />
@@ -27,7 +27,7 @@ describe("Loading test cases", () => {
     const errorElement = screen.getByLabelText("error-wrapper");
     const errorText = screen.getByText("errorMessage");
 
-    expect(errorElement).toBeTruthy();
+    expect(errorElement.classList.contains("show-error")).toBeTruthy();
     expect(errorText).toBeTruthy();
   });
 });

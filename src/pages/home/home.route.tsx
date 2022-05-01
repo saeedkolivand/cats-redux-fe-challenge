@@ -7,6 +7,7 @@ export const HomePathNames = {
 
 export const HomeRoutes: AppRouterTypes[] = [
   {
+    title: "Home",
     path: HomePathNames.root,
     element: <Home />,
     exact: true,
