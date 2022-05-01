@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "app/hooks";
-import ImageCard from "./components/imageCard/ImageCard";
+import ImageCard from "ui-components/imageCard/ImageCard";
 import {
   CatImagesListBoxStyle,
   CatImagesListLoadMoreStyle,
@@ -13,17 +13,16 @@ const CatImagesList: React.FC<CatImagesListProps> = (props) => {
 
   const { catImagesList } = useSelector((state) => state.imagesList);
 
-  const onClick = () => refetch();
+  const handleLoadMore = () => refetch();
 
   return (
     <CatImagesListBoxStyle>
       <CatImagesListWrapperStyle>
-        {catImagesList?.map((item) => (
-          <ImageCard {...item} key={item.id} />
-        ))}
+        {catImagesList &&
+          catImagesList.map((item) => <ImageCard {...item} key={item.id} />)}
       </CatImagesListWrapperStyle>
 
-      <CatImagesListLoadMoreStyle type="button" onClick={onClick}>
+      <CatImagesListLoadMoreStyle type="button" onClick={handleLoadMore}>
         Load More
       </CatImagesListLoadMoreStyle>
     </CatImagesListBoxStyle>

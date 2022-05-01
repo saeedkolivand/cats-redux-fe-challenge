@@ -2,7 +2,7 @@ import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import React from "react";
 import Image from "./Image";
 
-const initImagePreviewPortal = () => {
+export const initImagePreviewPortal = () => {
   const div = document.createElement("div");
   const body = document.querySelector("body")!;
   div.setAttribute("id", "image-preview");

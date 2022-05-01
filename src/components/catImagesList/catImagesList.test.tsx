@@ -1,6 +1,5 @@
 import CatImagesListSlice, { addCatImagesAction } from "./catImagesList.slice";
-import { CatImagesListReduxTypes } from "./catImagesList.types";
-import { ImageCardPropsTypes } from "./components/imageCard/imageCard.types";
+import { CatDataType, CatImagesListReduxTypes } from "./catImagesList.types";
 
 describe("Cat images list slice tests", () => {
   const { reducer } = CatImagesListSlice;
@@ -17,13 +16,15 @@ describe("Cat images list slice tests", () => {
       catImagesList: [],
       catImagesListLoading: true,
     };
-    const newValue: ImageCardPropsTypes[] = [
+    const newValue: CatDataType[] = [
       {
         breeds: [],
-        categories: {
-          id: 9,
-          name: "dream",
-        },
+        categories: [
+          {
+            id: 9,
+            name: "dream",
+          },
+        ],
         id: "1rd",
         url: "https://cdn2.thecatapi.com/images/1rd.jpg",
         width: 500,
@@ -35,11 +36,12 @@ describe("Cat images list slice tests", () => {
       catImagesList: [
         {
           breeds: [],
-          categories: {
-            id: 9,
-            name: "dream",
-          },
-
+          categories: [
+            {
+              id: 9,
+              name: "dream",
+            },
+          ],
           id: "1rd",
           url: "https://cdn2.thecatapi.com/images/1rd.jpg",
           width: 500,
@@ -64,7 +66,7 @@ describe("Cat images list slice tests", () => {
       catImagesListLoading: false,
     };
 
-    const newData: ImageCardPropsTypes[] = [
+    const newData: CatDataType[] = [
       ...previousState.catImagesList,
       {
         breeds: [],
@@ -101,7 +103,7 @@ describe("Cat images list slice tests", () => {
       catImagesList: [
         {
           breeds: [],
-          categories: { id: 9, name: "dream" },
+          categories: [{ id: 9, name: "dream" }],
           id: "1rd",
           url: "https://cdn2.thecatapi.com/images/1rd.jpg",
           width: 500,
@@ -111,11 +113,11 @@ describe("Cat images list slice tests", () => {
       catImagesListLoading: false,
     };
 
-    const newData: ImageCardPropsTypes[] = [
+    const newData: CatDataType[] = [
       ...previousState.catImagesList,
       {
         breeds: [],
-        categories: { id: 15, name: "clothes" },
+        categories: [{ id: 15, name: "clothes" }],
         id: "3dk",
         url: "https://cdn2.thecatapi.com/images/3dk.jpg",
         width: 500,
@@ -127,7 +129,7 @@ describe("Cat images list slice tests", () => {
       catImagesList: [
         {
           breeds: [],
-          categories: { id: 9, name: "dream" },
+          categories: [{ id: 9, name: "dream" }],
           id: "1rd",
           url: "https://cdn2.thecatapi.com/images/1rd.jpg",
           width: 500,
@@ -135,7 +137,7 @@ describe("Cat images list slice tests", () => {
         },
         {
           breeds: [],
-          categories: { id: 15, name: "clothes" },
+          categories: [{ id: 15, name: "clothes" }],
           id: "3dk",
           url: "https://cdn2.thecatapi.com/images/3dk.jpg",
           width: 500,
