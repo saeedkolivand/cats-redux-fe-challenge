@@ -11,7 +11,7 @@ export const ContainerStyle = styled.div`
   margin: 15vh auto auto;
 
   @media (max-width: 576px) {
-    margin: ${spacingSize.medium}px auto;
+    margin: ${spacingSize.small}ch auto;
   }
 `;
 

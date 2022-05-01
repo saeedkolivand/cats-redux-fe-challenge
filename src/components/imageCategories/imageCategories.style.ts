@@ -9,6 +9,7 @@ export const ImageCategoriesWrapperStyle = styled.nav`
 
   @media (max-width: 576px) {
     margin-top: ${spacingSize.medium}px;
+    box-shadow: unset;
   }
 
   ul {
