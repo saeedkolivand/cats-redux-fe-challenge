@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Image from "ui-components/image/Image";
-import { ImageCardPropsTypes } from "./imageCard.types";
+import { CatDataType } from "components/catImagesList/catImagesList.types";
 import { ImageCardStyle, ImageCardWrapperStyle } from "./imageCard.style";
 
-const ImageCard: React.FC<ImageCardPropsTypes> = (props) => {
+const ImageCard: React.FC<CatDataType> = (props) => {
   const { id, url } = props;
   const [showFullScreen, setShowFullScreen] = useState(false);
 
@@ -12,7 +12,10 @@ const ImageCard: React.FC<ImageCardPropsTypes> = (props) => {
 
   return (
     <>
-      <ImageCardWrapperStyle onClick={handleOpenPreview}>
+      <ImageCardWrapperStyle
+        onClick={handleOpenPreview}
+        aria-label="image-card-wrapper"
+      >
         <ImageCardStyle src={url} alt={`cat-${id}`} />
       </ImageCardWrapperStyle>
       <Image

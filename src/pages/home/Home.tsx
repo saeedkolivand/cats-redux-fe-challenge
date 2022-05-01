@@ -7,8 +7,8 @@ import {
   addCatImagesAction,
   addCatImagesCategoryAction,
 } from "components/catImagesList/catImagesList.slice";
+import { CatDataType } from "components/catImagesList/catImagesList.types";
 import { getCatImagesService } from "./home.api";
-import { CatFilteredCategoryTypes } from "./home.types";
 
 const Home = () => {
   const { imageCategoriesLoading, selectedImageCategory } = useSelector(
@@ -18,42 +18,44 @@ const Home = () => {
 
   const dispatch = useDispatch();
 
-  const { data, refetch, isLoading, isRefetching, isPreviousData, isError } =
-    useQuery("getCatImages", () =>
+  const { data, refetch, isLoading, isRefetching, isError } = useQuery(
+    "getCatImages",
+    () =>
       getCatImagesService({ limit: 10, category_ids: selectedImageCategory.id })
-    );
+  );
+
+  const handleAddCatImages = (data: CatDataType[]) => {
+    const temp = [...catImagesList, ...data];
+    return dispatch(addCatImagesAction(temp));
+  };
+
+  const handleAddCatImagesWithCategories = (data: CatDataType[]) => {
+    if (
+      data &&
+      data[0].categories &&
+      data[0].categories[0] &&
+      data[0].categories[0].name &&
+      selectedImageCategory.name === data[0].categories[0].name
+    ) {
+      const isNewData = catImagesList.find(
+        (item) =>
+          (item && item.categories && item.categories[0].name) ===
+          selectedImageCategory.name
+      );
+      if (isNewData) {
+        const temp = [...catImagesList, ...data];
+        return dispatch(addCatImagesCategoryAction(temp));
+      }
+      dispatch(addCatImagesCategoryAction(data));
+    }
+  };
 
   useEffect(() => {
     if (data?.data && !selectedImageCategory.id) {
-      const temp = [...catImagesList, ...data.data];
-      dispatch(addCatImagesAction(temp));
+      handleAddCatImages(data.data);
     }
-  }, [data]);
-
-  useEffect(() => {
     if (data?.data && selectedImageCategory.id) {
-      const serverCategories = data.data.map(
-        (item: CatFilteredCategoryTypes) => {
-          return {
-            ...item,
-            categories: item.categories[0],
-          };
-        }
-      );
-
-      if (selectedImageCategory.name === serverCategories[0].categories.name) {
-        const isSameData = catImagesList.find(
-          (item) => item.categories?.name === selectedImageCategory.name
-        );
-        if (isSameData) {
-          const temp = [...catImagesList, ...serverCategories];
-          dispatch(addCatImagesCategoryAction(temp));
-        }
-        if (!isSameData) {
-          const temp = [...serverCategories];
-          dispatch(addCatImagesCategoryAction(temp));
-        }
-      }
+      handleAddCatImagesWithCategories(data.data);
     }
   }, [data]);
 

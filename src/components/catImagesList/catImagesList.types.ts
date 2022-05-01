@@ -1,7 +1,14 @@
-import { ImageCardPropsTypes } from "./components/imageCard/imageCard.types";
+export interface CatDataType {
+  breeds: any[];
+  id: string;
+  url: string;
+  width: number;
+  height: number;
+  categories?: [{ id: number | string; name: string }];
+}
 
 export interface CatImagesListReduxTypes {
-  catImagesList: ImageCardPropsTypes[];
+  catImagesList: CatDataType[];
   catImagesListLoading: boolean;
 }
 

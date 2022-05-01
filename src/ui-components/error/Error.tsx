@@ -9,7 +9,11 @@ import {
 } from "./error.style";
 
 const Error: React.FC<ErrorPropsTypes> = (props) => {
-  const { hasError, fetchDataFunction, errorMessage = "" } = props;
+  const {
+    hasError,
+    fetchDataFunction,
+    errorMessage = "Error while fetching data!",
+  } = props;
 
   const errorStatus = hasError ? "show-error" : "hide-error";
 
