@@ -18,11 +18,13 @@ const ImageCard: React.FC<CatDataType> = (props) => {
       >
         <ImageCardStyle src={url} alt={`cat-${id}`} />
       </ImageCardWrapperStyle>
-      <Image
-        showPreview={showFullScreen}
-        url={url}
-        hidePreview={handleClosePreview}
-      />
+      {showFullScreen && (
+        <Image
+          showPreview={showFullScreen}
+          url={url}
+          hidePreview={handleClosePreview}
+        />
+      )}
     </>
   );
 };
